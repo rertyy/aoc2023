@@ -7,7 +7,11 @@ def check_num(schematic: list[list[str]], y: int, x: int, direction: int = 0) ->
     if schematic[y][x].isdigit():
         match direction:
             case 0:  # both
-                return check_num(schematic, y, x - 1, -1) + schematic[y][x] + check_num(schematic, y, x + 1, 1)
+                return (
+                    check_num(schematic, y, x - 1, -1)
+                    + schematic[y][x]
+                    + check_num(schematic, y, x + 1, 1)
+                )
             case -1:  # left only
                 return check_num(schematic, y, x - 1, -1) + schematic[y][x]
             case 1:  # right only
@@ -67,10 +71,22 @@ def failed():
 
                 stride = 3
                 if i - 1 >= 0:
-                    x = schematic[i - 1][max(0, gear_start - stride):min(len(schematic) - 1, gear_end + stride)]
-                y = schematic[i][max(0, gear_start - stride):min(len(schematic) - 1, gear_end + stride)]
+                    x = schematic[i - 1][
+                        max(0, gear_start - stride) : min(
+                            len(schematic) - 1, gear_end + stride
+                        )
+                    ]
+                y = schematic[i][
+                    max(0, gear_start - stride) : min(
+                        len(schematic) - 1, gear_end + stride
+                    )
+                ]
                 if i + 1 < len(schematic):
-                    z = schematic[i + 1][max(0, gear_start - stride):min(len(schematic) - 1, gear_end + stride)]
+                    z = schematic[i + 1][
+                        max(0, gear_start - stride) : min(
+                            len(schematic) - 1, gear_end + stride
+                        )
+                    ]
 
                 for j in range(i - 1, i + 2):
                     if i < 0 or i > len(schematic) - 1:
@@ -86,9 +102,9 @@ def failed():
                             break
 
                         if (
-                                gear_start - 1 in range(num_start, num_end + 1)
-                                or gear_start in range(num_start, num_end + 1)
-                                or gear_start + 1 in range(num_start, num_end + 1)
+                            gear_start - 1 in range(num_start, num_end + 1)
+                            or gear_start in range(num_start, num_end + 1)
+                            or gear_start + 1 in range(num_start, num_end + 1)
                         ):
                             count += 1
                             gear_ratio *= int(num.group())

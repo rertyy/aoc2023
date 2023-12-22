@@ -1,10 +1,6 @@
 import re
 
-max_cols = {
-    "red": 12,
-    "green": 13,
-    "blue": 14
-}
+max_cols = {"red": 12, "green": 13, "blue": 14}
 
 sums = 0
 
@@ -14,7 +10,7 @@ with open("input.txt") as f:
         game_id = int(game[5:])
         valid = True
         for colour in ("red", "green", "blue"):
-            colours = re.findall(fr"\d+ {colour}", sets)
+            colours = re.findall(rf"\d+ {colour}", sets)
             for num_colour in colours:
                 num, _ = num_colour.split(" ")
                 if int(num) > max_cols[colour]:

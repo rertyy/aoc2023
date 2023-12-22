@@ -7,7 +7,7 @@ with open("input.txt") as f:
         _, sets = line.split(": ")
         power = 1
         for colour in ("red", "green", "blue"):
-            colours = re.findall(fr"\d+ {colour}", sets)
+            colours = re.findall(rf"\d+ {colour}", sets)
             min_required = 0
             for num_colour in colours:
                 num, _ = num_colour.split(" ")

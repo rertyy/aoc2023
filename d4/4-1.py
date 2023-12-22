@@ -2,7 +2,6 @@ with open("input.txt") as f:
     total = 0
 
     for line in f:
-
         _, nums = line.strip().split(": ")
         winning_nums, card_nums = nums.split(" | ")
         winning_nums = winning_nums.split()

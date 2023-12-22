@@ -1,8 +1,9 @@
 # for every record, binary search to find min and max holding
 # in which it is
 
+
 def main():
-    with (open("input.txt") as f):
+    with open("input.txt") as f:
         lines = f.readlines()
         times = lines[0].split()[1:]
         distances = lines[1].split()[1:]
@@ -14,7 +15,11 @@ def main():
             max_time = find_max_winning(time, distance)
             min_time = find_min_winning(time, distance)
 
-            if min_time not in range(time) or max_time not in range(time) or max_time < min_time:
+            if (
+                min_time not in range(time)
+                or max_time not in range(time)
+                or max_time < min_time
+            ):
                 possibilities *= 0
                 break
 

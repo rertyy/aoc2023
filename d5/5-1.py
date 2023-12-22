@@ -10,11 +10,12 @@ seed 99 maps to soil 51
 
 
 class Map:
-
     def __init__(self, map_from: str, map_to: str):
         self.src = map_from
         self.dest = map_to
-        self.ranges: list[tuple[range, range]] = []  # probably better data structures than a list
+        self.ranges: list[
+            tuple[range, range]
+        ] = []  # probably better data structures than a list
 
     def add(self, src_range: range, dest_range: range) -> None:
         self.ranges.append((src_range, dest_range))
@@ -44,8 +45,10 @@ def form_maps(lines: list[str]) -> dict[str, Map]:
             dest_start = int(dest_start)
             src_start = int(src_start)
             range_length = int(range_length)
-            current_map.add(range(src_start, src_start + range_length),
-                            range(dest_start, dest_start + range_length))
+            current_map.add(
+                range(src_start, src_start + range_length),
+                range(dest_start, dest_start + range_length),
+            )
     for m in maps.values():
         print(m.src, m.ranges)
 
@@ -62,7 +65,6 @@ def main(file_path):
         maps = form_maps(lines)
 
         for seed in seeds:
-
             evaluating = int(seed)
             curr_map = maps["seed"]
             while True:

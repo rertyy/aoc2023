@@ -1,7 +1,7 @@
 import re
 
 sums = 0
-symbols = ['#', '$', '%', '&', '*', '+', '-', '/', '=', '@']
+symbols = ["#", "$", "%", "&", "*", "+", "-", "/", "=", "@"]
 symbols_reg = re.compile("|".join(map(re.escape, symbols)))
 
 with open("input.txt") as f:
@@ -15,7 +15,9 @@ with open("input.txt") as f:
             start, end = match.span()
 
             char_before = max(start - 1, 0)
-            char_after = min(len(line) - 1, end + 1)  # this is the char after + 1 index because end exclusive
+            char_after = min(
+                len(line) - 1, end + 1
+            )  # this is the char after + 1 index because end exclusive
 
             before_index = max(0, i - 1)
             after_index = min(len(schematic) - 1, i + 1)
